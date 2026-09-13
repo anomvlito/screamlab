@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Logo } from "@/components/Logo";
+import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 import { nav } from "@/lib/content";
 import { whatsappUrl } from "@/lib/site";
 
@@ -19,7 +20,8 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
+          <ThemeSwitcher className="hidden sm:flex" />
           <a
             href={whatsappUrl()}
             target="_blank"
@@ -54,6 +56,10 @@ export function Header() {
                   {item.label}
                 </a>
               ))}
+              <div className="mt-1 flex items-center justify-between border-t border-line px-4 pt-3 sm:hidden">
+                <span className="label text-[0.65rem] text-muted">Paleta</span>
+                <ThemeSwitcher />
+              </div>
             </nav>
           </details>
         </div>

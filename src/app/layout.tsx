@@ -70,9 +70,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${body.variable} ${display.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-bg text-fg">
-        {/* Permite comparar paletas sin recompilar: /?theme=acid, /?theme=uv, /?theme=ember */}
+        {/* Aplica antes del primer paint la paleta guardada por el selector del sitio
+            (localStorage) o la de un enlace de prueba (?theme=), para que no haya parpadeo. */}
         <Script id="theme-preview" strategy="beforeInteractive">
-          {`try{var t=new URLSearchParams(location.search).get("theme");if(t&&/^(ember|acid|uv)$/.test(t)){document.documentElement.setAttribute("data-theme",t);}}catch(e){}`}
+          {`try{var t=new URLSearchParams(location.search).get("theme");if(!t){try{t=localStorage.getItem("screamlab-theme");}catch(e){}}if(t&&/^(ember|acid|uv)$/.test(t)){document.documentElement.setAttribute("data-theme",t);}}catch(e){}`}
         </Script>
         {children}
       </body>
