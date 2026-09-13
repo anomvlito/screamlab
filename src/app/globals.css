@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+:root {
+  --background: #09090b;
+  --surface: #121215;
+  --surface-2: #1a1a1f;
+  --border: #27272a;
+  --foreground: #f4f4f5;
+  --muted: #a1a1aa;
+  --accent: #e5232f;
+  --accent-hover: #ff3b47;
+  --accent-soft: rgba(229, 35, 47, 0.14);
+  --bone: #e7e2d6;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-bone: var(--bone);
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-display: var(--font-anton), Impact, "Arial Narrow Bold", sans-serif;
+}
+
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Logo rendered through a CSS mask so it takes any color (currentColor). */
+.logo-mask {
+  display: block;
+  aspect-ratio: 3682 / 928;
+  background-color: currentColor;
+  -webkit-mask: url("/brand/screamlab-logo.svg") no-repeat center / contain;
+  mask: url("/brand/screamlab-logo.svg") no-repeat center / contain;
+}
+
+.display {
+  font-family: var(--font-display);
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.5 0'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
+}
+
+.glow {
+  background:
+    radial-gradient(60% 50% at 50% 0%, rgba(229, 35, 47, 0.22), transparent 70%),
+    radial-gradient(40% 40% at 80% 100%, rgba(229, 35, 47, 0.08), transparent 70%);
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee 40s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
