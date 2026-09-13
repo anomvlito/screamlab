@@ -27,12 +27,12 @@ export function ContactForm() {
   }
 
   const field =
-    "w-full rounded-xl border border-border bg-surface px-4 py-3 text-sm text-foreground placeholder:text-muted/70 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/40";
+    "w-full rounded-xl border border-line bg-bg px-4 py-3 text-step-0 text-fg placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30";
 
   return (
-    <form onSubmit={handleSubmit} className="grid gap-4">
-      <label className="grid gap-1.5 text-sm">
-        <span className="text-muted">{contact.formLabels.name}</span>
+    <form onSubmit={handleSubmit} className="grid gap-4 rounded-card border border-line bg-bg-2 p-6 sm:p-8">
+      <label className="grid gap-1.5">
+        <span className="label text-[0.65rem] text-muted">{contact.formLabels.name}</span>
         <input
           name="name"
           required
@@ -43,8 +43,8 @@ export function ContactForm() {
           placeholder="Ej: Camila"
         />
       </label>
-      <label className="grid gap-1.5 text-sm">
-        <span className="text-muted">{contact.formLabels.style}</span>
+      <label className="grid gap-1.5">
+        <span className="label text-[0.65rem] text-muted">{contact.formLabels.style}</span>
         <input
           name="style"
           value={style}
@@ -53,8 +53,8 @@ export function ContactForm() {
           placeholder="Ej: deathcore, banda propia"
         />
       </label>
-      <label className="grid gap-1.5 text-sm">
-        <span className="text-muted">{contact.formLabels.goal}</span>
+      <label className="grid gap-1.5">
+        <span className="label text-[0.65rem] text-muted">{contact.formLabels.goal}</span>
         <textarea
           name="goal"
           rows={3}
@@ -66,7 +66,7 @@ export function ContactForm() {
       </label>
       <button
         type="submit"
-        className="display inline-flex h-12 items-center justify-center rounded-full bg-accent px-6 text-base tracking-wider text-white transition hover:bg-accent-hover"
+        className="btn-primary label inline-flex h-12 items-center justify-center rounded-full px-6 text-[0.8rem]"
       >
         {contact.formLabels.submit}
       </button>

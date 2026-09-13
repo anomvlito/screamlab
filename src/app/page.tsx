@@ -7,8 +7,9 @@ import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { JsonLd } from "@/components/JsonLd";
 import { Marquee } from "@/components/Marquee";
-import { Paths } from "@/components/Paths";
 import { Method } from "@/components/Method";
+import { Paths } from "@/components/Paths";
+import { Press } from "@/components/Press";
 import { Pricing } from "@/components/Pricing";
 import { Programs } from "@/components/Programs";
 import { Testimonials } from "@/components/Testimonials";
@@ -24,9 +25,10 @@ export default function Home() {
         <Marquee />
         <Method />
         <Paths />
-        <BeforeAfter />
-        <Programs />
         <Coach />
+        <Press />
+        <Programs />
+        <BeforeAfter />
         <Testimonials />
         <Pricing />
         <Faq />

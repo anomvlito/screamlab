@@ -4,9 +4,9 @@ import { coach } from "@/lib/content";
 
 export function Coach() {
   return (
-    <Section id="coach" title={coach.title}>
-      <div className="grid gap-8 lg:grid-cols-[2fr_3fr] lg:items-center">
-        <figure className="grain relative aspect-[4/5] overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-surface-2 to-background">
+    <Section id="coach" eyebrow={coach.eyebrow} title={coach.name} intro={coach.role}>
+      <div className="grid gap-8 lg:grid-cols-[5fr_7fr] lg:gap-12">
+        <figure className="mesh grain relative aspect-[4/5] overflow-hidden rounded-card border border-line bg-bg-2 lg:sticky lg:top-24">
           {coach.photo ? (
             <Image
               src={coach.photo}
@@ -14,40 +14,62 @@ export function Coach() {
               fill
               sizes="(min-width: 1024px) 40vw, 100vw"
               className="object-cover"
-              priority={false}
             />
           ) : (
-            <span className="display absolute bottom-4 left-4 text-sm tracking-[0.3em] text-muted">Foto pendiente</span>
+            <div className="absolute inset-0 flex items-end p-6">
+              <p className="label text-[0.65rem] text-muted">Foto en camino</p>
+            </div>
           )}
           {coach.photo && coach.photoCredit ? (
-            <figcaption className="absolute bottom-3 right-3 rounded-full bg-background/70 px-3 py-1 text-[11px] text-muted backdrop-blur">
+            <figcaption className="absolute bottom-3 right-3 rounded-full bg-bg/70 px-3 py-1 text-[0.65rem] text-muted backdrop-blur">
               Foto: {coach.photoCredit}
             </figcaption>
           ) : null}
         </figure>
-        <div>
-          <h3 className="display text-4xl">{coach.name}</h3>
-          <p className="mt-1 text-sm uppercase tracking-[0.2em] text-accent">{coach.role}</p>
-          <div className="mt-6 space-y-4 text-base leading-relaxed text-muted">
+
+        <div className="flex flex-col gap-8">
+          <blockquote className="mesh glass relative overflow-hidden rounded-card border-l-2 border-accent px-6 py-5">
+            <p className="display text-step-2 text-balance">“{coach.pullQuote.text}”</p>
+            <footer className="mt-3 text-step--1 text-muted">
+              <a href={coach.pullQuote.url} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-fg">
+                {coach.pullQuote.source}
+              </a>
+            </footer>
+          </blockquote>
+
+          <div className="space-y-4 text-step-0 leading-relaxed text-muted text-pretty">
             {coach.bio.map((p) => (
               <p key={p}>{p}</p>
             ))}
           </div>
-          <ul className="mt-6 flex flex-wrap gap-2">
-            {coach.highlights.map((h) => (
-              <li key={h} className="rounded-full border border-border px-3 py-1 text-xs uppercase tracking-wider text-foreground">
-                {h}
-              </li>
+
+          <dl className="grid grid-cols-3 gap-3 border-t border-line pt-6">
+            {coach.facts.map((f) => (
+              <div key={f.label} className="flex flex-col-reverse">
+                <dt className="mt-1 text-step--1 leading-tight text-muted">{f.label}</dt>
+                <dd className="display text-step-3">{f.value}</dd>
+              </div>
             ))}
-          </ul>
-          <a
-            href={coach.band.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="display mt-6 inline-block text-sm tracking-[0.2em] text-accent hover:text-accent-hover"
-          >
-            Escucha a {coach.band.name} · @{coach.band.instagram} →
-          </a>
+          </dl>
+
+          <div className="flex flex-wrap gap-3">
+            <a
+              href={coach.band.spotify}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="label inline-flex h-11 items-center rounded-full border border-line px-5 text-[0.7rem] text-fg transition hover:border-fg"
+            >
+              Escucha a {coach.band.name}
+            </a>
+            <a
+              href={`https://instagram.com/${coach.band.instagram}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="label inline-flex h-11 items-center rounded-full border border-line px-5 text-[0.7rem] text-muted transition hover:border-fg hover:text-fg"
+            >
+              @{coach.band.instagram}
+            </a>
+          </div>
         </div>
       </div>
     </Section>

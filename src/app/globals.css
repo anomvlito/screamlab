@@ -1,99 +1,238 @@
 @import "tailwindcss";
 
+/* ------------------------------------------------------------------
+   Tokens. Tres paletas: ember (por defecto), acid y uv.
+   Se cambian con data-theme en <html>; para previsualizar: /?theme=acid
+   ------------------------------------------------------------------ */
 :root {
-  --background: #09090b;
-  --surface: #121215;
-  --surface-2: #1a1a1f;
-  --border: #27272a;
-  --foreground: #f4f4f5;
-  --muted: #a1a1aa;
-  --accent: #e5232f;
-  --accent-hover: #ff3b47;
-  --accent-soft: rgba(229, 35, 47, 0.14);
-  --bone: #e7e2d6;
+  --bg: #0b0a0c;
+  --bg-2: #121114;
+  --bg-2-rgb: 18, 17, 20;
+  --bg-3: #1b191d;
+  --line: #2b282e;
+  --fg: #f3efe6;
+  --muted: #a39e95;
+  --accent: #ff2e3d;
+  --accent-2: #ff8a00;
+  --accent-ink: #ffffff;
+  --accent-soft: rgba(255, 46, 61, 0.12);
+  --grad-accent: linear-gradient(120deg, var(--accent) 0%, var(--accent-2) 100%);
+  --grad-mesh:
+    radial-gradient(50% 40% at 15% 10%, rgba(255, 46, 61, 0.28), transparent 70%),
+    radial-gradient(45% 45% at 85% 20%, rgba(255, 138, 0, 0.16), transparent 70%),
+    radial-gradient(60% 50% at 50% 100%, rgba(255, 46, 61, 0.14), transparent 70%);
+}
+
+:root[data-theme="acid"] {
+  --bg: #070907;
+  --bg-2: #0e120e;
+  --bg-2-rgb: 14, 18, 14;
+  --bg-3: #161c16;
+  --line: #26302a;
+  --fg: #eef3e6;
+  --muted: #9aa696;
+  --accent: #c8ff2e;
+  --accent-2: #2ee6a8;
+  --accent-ink: #0a0d08;
+  --accent-soft: rgba(200, 255, 46, 0.1);
+  --grad-accent: linear-gradient(120deg, var(--accent) 0%, var(--accent-2) 100%);
+  --grad-mesh:
+    radial-gradient(50% 40% at 15% 10%, rgba(200, 255, 46, 0.2), transparent 70%),
+    radial-gradient(45% 45% at 85% 20%, rgba(46, 230, 168, 0.16), transparent 70%),
+    radial-gradient(60% 50% at 50% 100%, rgba(200, 255, 46, 0.1), transparent 70%);
+}
+
+:root[data-theme="uv"] {
+  --bg: #09070f;
+  --bg-2: #100d18;
+  --bg-2-rgb: 16, 13, 24;
+  --bg-3: #181322;
+  --line: #2b2438;
+  --fg: #f1ecf7;
+  --muted: #a297b3;
+  --accent: #ff2d7a;
+  --accent-2: #7c4dff;
+  --accent-ink: #ffffff;
+  --accent-soft: rgba(255, 45, 122, 0.12);
+  --grad-accent: linear-gradient(120deg, var(--accent) 0%, var(--accent-2) 100%);
+  --grad-mesh:
+    radial-gradient(50% 40% at 15% 10%, rgba(255, 45, 122, 0.26), transparent 70%),
+    radial-gradient(45% 45% at 85% 20%, rgba(124, 77, 255, 0.24), transparent 70%),
+    radial-gradient(60% 50% at 50% 100%, rgba(124, 77, 255, 0.14), transparent 70%);
+}
+
+/* Escala tipográfica y espaciado fluidos (se adaptan al ancho del dispositivo). */
+:root {
+  --step--1: clamp(0.82rem, 0.78rem + 0.2vw, 0.94rem);
+  --step-0: clamp(1rem, 0.94rem + 0.3vw, 1.15rem);
+  --step-1: clamp(1.2rem, 1.05rem + 0.7vw, 1.6rem);
+  --step-2: clamp(1.6rem, 1.25rem + 1.6vw, 2.5rem);
+  --step-3: clamp(2.2rem, 1.4rem + 3.4vw, 4.2rem);
+  --step-4: clamp(3rem, 1.4rem + 6.5vw, 7.5rem);
+  --step-5: clamp(3.4rem, 0.6rem + 11vw, 12rem);
+  --gutter: clamp(1rem, 0.4rem + 3vw, 3.5rem);
+  --section: clamp(4rem, 2.5rem + 6vw, 9rem);
+  --radius: 1.25rem;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-surface: var(--surface);
-  --color-surface-2: var(--surface-2);
-  --color-border: var(--border);
-  --color-foreground: var(--foreground);
+  --color-bg: var(--bg);
+  --color-bg-2: var(--bg-2);
+  --color-bg-3: var(--bg-3);
+  --color-line: var(--line);
+  --color-fg: var(--fg);
   --color-muted: var(--muted);
   --color-accent: var(--accent);
-  --color-accent-hover: var(--accent-hover);
+  --color-accent-2: var(--accent-2);
+  --color-accent-ink: var(--accent-ink);
   --color-accent-soft: var(--accent-soft);
-  --color-bone: var(--bone);
-  --font-sans: var(--font-inter), system-ui, sans-serif;
-  --font-display: var(--font-anton), Impact, "Arial Narrow Bold", sans-serif;
+  --font-sans: var(--font-body), system-ui, sans-serif;
+  --font-display: var(--font-display), Impact, "Arial Narrow Bold", sans-serif;
 }
+
+@utility text-step--1 { font-size: var(--step--1); }
+@utility text-step-0 { font-size: var(--step-0); }
+@utility text-step-1 { font-size: var(--step-1); }
+@utility text-step-2 { font-size: var(--step-2); }
+@utility text-step-3 { font-size: var(--step-3); }
+@utility text-step-4 { font-size: var(--step-4); }
+@utility text-step-5 { font-size: var(--step-5); }
+@utility px-gutter { padding-inline: var(--gutter); }
+@utility py-section { padding-block: var(--section); }
+@utility rounded-card { border-radius: var(--radius); }
 
 html {
   color-scheme: dark;
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--bg);
+  color: var(--fg);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
 }
 
 ::selection {
   background: var(--accent);
-  color: #fff;
-}
-
-/* Logo rendered through a CSS mask so it takes any color (currentColor). */
-.logo-mask {
-  display: block;
-  aspect-ratio: 3682 / 928;
-  background-color: currentColor;
-  -webkit-mask: url("/brand/screamlab-logo.svg") no-repeat center / contain;
-  mask: url("/brand/screamlab-logo.svg") no-repeat center / contain;
+  color: var(--accent-ink);
 }
 
 .display {
   font-family: var(--font-display);
-  letter-spacing: 0.01em;
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: 0.005em;
   text-transform: uppercase;
 }
 
-.grain::before {
+.label {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* Logo vía mask: hereda currentColor, se puede pintar con degradado. */
+.logo-mask {
+  display: block;
+  aspect-ratio: 3682 / 928;
+  background: currentColor;
+  -webkit-mask: url("/brand/screamlab-logo.svg") no-repeat center / contain;
+  mask: url("/brand/screamlab-logo.svg") no-repeat center / contain;
+}
+
+.logo-gradient {
+  background: var(--grad-accent);
+}
+
+.grad-text {
+  background: var(--grad-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.btn-primary {
+  background: var(--grad-accent);
+  color: var(--accent-ink);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+.btn-primary:hover {
+  filter: brightness(1.08) saturate(1.1);
+  transform: translateY(-1px);
+}
+
+/* Borde con degradado, para tarjetas destacadas. */
+.grad-border {
+  position: relative;
+  background: var(--bg-2);
+}
+.grad-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--grad-accent);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.mesh {
+  background-image: var(--grad-mesh);
+}
+
+/* Glassmorphism: sirve sobre un fondo con imagen o degradado (mesh, grain),
+   nunca sobre un color plano, o el desenfoque no se nota. */
+.glass {
+  position: relative;
+  background: rgba(var(--bg-2-rgb), 0.5);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  border-left: 1px solid rgba(255, 255, 255, 0.09);
+  border-right: 1px solid rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass {
+    background: rgba(var(--bg-2-rgb), 0.92);
+  }
+}
+
+.grain::after {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.35;
+  opacity: 0.28;
   mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.5 0'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.5 0'/></filter><rect width='180' height='180' filter='url(%23n)'/></svg>");
 }
 
-.glow {
-  background:
-    radial-gradient(60% 50% at 50% 0%, rgba(229, 35, 47, 0.22), transparent 70%),
-    radial-gradient(40% 40% at 80% 100%, rgba(229, 35, 47, 0.08), transparent 70%);
+.hairline {
+  background: linear-gradient(90deg, transparent, var(--line) 20%, var(--line) 80%, transparent);
+  height: 1px;
 }
 
 @keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
-
 .marquee-track {
-  animation: marquee 40s linear infinite;
+  animation: marquee 38s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track {
-    animation: none;
-  }
-  html {
-    scroll-behavior: auto;
-  }
+  .marquee-track { animation: none; }
+  html { scroll-behavior: auto; }
+  .btn-primary:hover { transform: none; }
 }

@@ -1,20 +1,24 @@
 import type { Metadata, Viewport } from "next";
-import { Anton, Inter } from "next/font/google";
+import { Archivo, Big_Shoulders } from "next/font/google";
+import Script from "next/script";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const body = Archivo({
+  variable: "--font-body",
   subsets: ["latin"],
   display: "swap",
 });
 
-const anton = Anton({
-  variable: "--font-anton",
+const display = Big_Shoulders({
+  variable: "--font-display",
   subsets: ["latin"],
-  weight: "400",
+  weight: ["600", "800", "900"],
   display: "swap",
 });
+
+/** Paleta por defecto. Opciones: "ember" | "acid" | "uv". Previsualiza con /?theme=acid */
+const DEFAULT_THEME = process.env.NEXT_PUBLIC_THEME ?? "ember";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -31,6 +35,8 @@ export const metadata: Metadata = {
     "fry scream",
     "falsas cuerdas",
     "coach vocal metal",
+    "Tamara Rivas",
+    "Chances",
     "Santiago",
     "Chile",
   ],
@@ -51,17 +57,23 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#09090b",
+  themeColor: "#0b0a0c",
   colorScheme: "dark",
+  viewportFit: "cover",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="es-CL"
-      className={`${inter.variable} ${anton.variable} h-full antialiased`}
+      data-theme={DEFAULT_THEME}
+      className={`${body.variable} ${display.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground">
+      <body className="min-h-full flex flex-col bg-bg text-fg">
+        {/* Permite comparar paletas sin recompilar: /?theme=acid, /?theme=uv, /?theme=ember */}
+        <Script id="theme-preview" strategy="beforeInteractive">
+          {`try{var t=new URLSearchParams(location.search).get("theme");if(t&&/^(ember|acid|uv)$/.test(t)){document.documentElement.setAttribute("data-theme",t);}}catch(e){}`}
+        </Script>
         {children}
       </body>
     </html>

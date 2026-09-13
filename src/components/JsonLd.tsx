@@ -12,6 +12,7 @@ export function JsonLd() {
     email: site.email,
     telephone: `+${site.whatsapp.number}`,
     sameAs: [instagramUrl()],
+    founder: { "@type": "Person", name: "Tamara Rivas", jobTitle: "Coach de distorsiones vocales" },
     address: {
       "@type": "PostalAddress",
       addressLocality: "Santiago",

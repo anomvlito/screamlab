@@ -3,20 +3,17 @@ import { testimonials } from "@/lib/content";
 
 export function Testimonials() {
   return (
-    <Section id="testimonios" title={testimonials.title} tone="surface">
+    <Section id="testimonios" eyebrow={testimonials.eyebrow} title={testimonials.title}>
       <ul className="grid gap-4 md:grid-cols-3">
         {testimonials.items.map((t) => (
-          <li key={t.quote} className="flex flex-col rounded-2xl border border-border bg-background p-6">
-            <span aria-hidden="true" className="display text-5xl leading-none text-accent">
-              &ldquo;
+          <li key={t.quote} className="flex flex-col rounded-card border border-line bg-bg-2 p-6 sm:p-8">
+            <span className="label inline-block self-start rounded-full bg-accent-soft px-3 py-1 text-[0.65rem] text-accent">
+              {t.outcome}
             </span>
-            <blockquote className="mt-2 text-sm leading-relaxed text-foreground">{t.quote}</blockquote>
-            <footer className="mt-6 text-xs text-muted">
-              <span className="block font-medium text-foreground">{t.name}</span>
+            <blockquote className="mt-5 text-step-0 leading-relaxed text-fg/90">{t.quote}</blockquote>
+            <footer className="mt-6 text-step--1 text-muted">
+              <span className="block font-medium text-fg">{t.name}</span>
               {t.band}
-              <span className="mt-2 block rounded-full border border-accent/40 px-3 py-1 text-[11px] uppercase tracking-wider text-accent">
-                {t.outcome}
-              </span>
             </footer>
           </li>
         ))}

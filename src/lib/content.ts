@@ -1,11 +1,11 @@
 /**
  * Todo el texto del sitio vive aquí para editarlo sin tocar componentes.
- * Los precios y testimonios son referenciales: reemplázalos antes de publicar.
+ * Los precios y los testimonios de alumnos son referenciales: reemplázalos antes de publicar.
+ * Los datos de Tamara y Chances salen de prensa (Rockaxis, Expectador, Parlante, Bandcamp).
  */
 
 export const nav = [
   { href: "#metodo", label: "Método" },
-  { href: "#caminos", label: "Caminos" },
   { href: "#programas", label: "Programas" },
   { href: "#coach", label: "Coach" },
   { href: "#precios", label: "Precios" },
@@ -17,54 +17,23 @@ export const hero = {
   kicker: "Academia de canto extremo · Santiago, Chile",
   title: ["Grita fuerte.", "Sin romperte."],
   subtitle:
-    "Scream, growl, fry y falsas cuerdas con técnica segura y medible. Clases online y presenciales para metal, hardcore, punk y todo lo que necesite distorsión vocal.",
+    "Scream, growl, fry y falsas cuerdas con técnica segura. Clases online y presenciales con Tamara Rivas, voz de Chances.",
   primaryCta: "Agenda tu clase de prueba",
   secondaryCta: "Ver programas",
-  stats: [
-    { value: "1:1", label: "Clases personalizadas" },
-    { value: "0", label: "Lesiones con nuestro método" },
-    { value: "100%", label: "Adaptado a tu banda y estilo" },
+  proof: [
+    { value: "1:1", label: "Clases a tu medida" },
+    { value: "8", label: "Semanas para tu primera distorsión estable" },
+    { value: "100%", label: "Técnica sin dolor ni afonía" },
   ],
 } as const;
 
-export const paths = {
-  title: "Elige tu camino",
-  intro: "Tres puntos de partida distintos, un mismo laboratorio. En la clase de prueba definimos cuál es el tuyo.",
-  items: [
-    {
-      name: "Fry scream",
-      who: "Para post-hardcore, metalcore y screamo",
-      text: "Distorsión aguda y controlada desde el vocal fry. Ideal si partes de cero o tu voz es liviana.",
-    },
-    {
-      name: "False cord",
-      who: "Para death, deathcore y hardcore",
-      text: "Growl medio y bajo con las falsas cuerdas. Potencia, cuerpo y resistencia para sets largos.",
-    },
-    {
-      name: "Cantante que quiere grit",
-      who: "Para rock, punk y voces limpias",
-      text: "Ya cantas y quieres agregar rasgado y distorsión sin perder afinación ni salud vocal.",
-    },
-  ],
+/** Escenarios reales de Chances con Tamara en la voz (prensa 2024 a 2026). */
+export const stages = {
+  label: "La coach ha compartido escenario con",
+  items: ["Korn", "Meshuggah", "Converge", "Black Veil Brides", "The Ghost Inside", "Lollapalooza Chile 2025", "REC 2025"],
 } as const;
 
-export const beforeAfter = {
-  title: "Antes y después",
-  intro: "El mismo alumno, la misma frase: primera sesión y semana diez. Sin filtros ni edición.",
-  // Sube los audios a /public/audio/antes.mp3 y /public/audio/despues.mp3 y cambia ready a true.
-  ready: false,
-  before: { label: "Sesión 1", src: "/audio/antes.mp3" },
-  after: { label: "Semana 10", src: "/audio/despues.mp3" },
-  pending: "Estamos grabando los primeros ejemplos con alumnos reales. Mientras tanto, escucha los clips en Instagram.",
-} as const;
-
-export const guarantee = {
-  title: "Garantía del laboratorio",
-  text: "Si después de la clase de prueba sientes que el método no es para ti, no pagas nada más. Y si en 8 semanas de clases 1:1 no logras tu primera distorsión estable, seguimos trabajando sin costo hasta que la tengas.",
-} as const;
-
-export const marquee = [
+export const techniques = [
   "Fry scream",
   "False cord",
   "Growl",
@@ -78,13 +47,14 @@ export const marquee = [
 ] as const;
 
 export const method = {
-  title: "El método Scream Lab en 4 fases",
+  eyebrow: "El método",
+  title: "Un laboratorio, no un misterio",
   intro:
-    "La distorsión vocal se puede enseñar paso a paso. En Scream Lab trabajamos con anatomía, feedback en tiempo real y grabaciones de tu progreso, para que cada sesión deje una habilidad concreta.",
-  pillars: [
+    "La distorsión vocal se enseña paso a paso. Trabajamos con anatomía, feedback en tiempo real y grabaciones de tu progreso, para que cada sesión deje una habilidad concreta.",
+  steps: [
     {
       title: "Diagnóstico",
-      text: "Primera sesión: evaluamos tu voz limpia, respiración y hábitos. Salimos con un plan de 8 semanas y objetivos claros.",
+      text: "Evaluamos tu voz limpia, respiración y hábitos. Sales de la primera sesión con un plan de 8 semanas y objetivos claros.",
     },
     {
       title: "Técnica segura",
@@ -101,14 +71,49 @@ export const method = {
   ],
 } as const;
 
+export const paths = {
+  eyebrow: "Punto de partida",
+  title: "Elige tu camino",
+  intro: "Tres puntos de partida distintos, un mismo laboratorio. En la clase de prueba definimos cuál es el tuyo.",
+  items: [
+    {
+      name: "Fry scream",
+      who: "Post-hardcore, metalcore, screamo",
+      text: "Distorsión aguda y controlada desde el vocal fry. Ideal si partes de cero o tu voz es liviana.",
+    },
+    {
+      name: "False cord",
+      who: "Death, deathcore, hardcore",
+      text: "Growl medio y bajo con las falsas cuerdas. Potencia, cuerpo y resistencia para sets largos.",
+    },
+    {
+      name: "Cantas y quieres grit",
+      who: "Rock, punk, voces limpias",
+      text: "Ya cantas y quieres agregar rasgado y distorsión sin perder afinación ni salud vocal.",
+    },
+  ],
+} as const;
+
+export const beforeAfter = {
+  eyebrow: "Resultados",
+  title: "Antes y después",
+  intro: "El mismo alumno, la misma frase: primera sesión y semana diez. Sin filtros ni edición.",
+  // Sube los audios a /public/audio/antes.mp3 y /public/audio/despues.mp3 y cambia ready a true.
+  ready: false,
+  before: { label: "Sesión 1", src: "/audio/antes.mp3" },
+  after: { label: "Semana 10", src: "/audio/despues.mp3" },
+  pending: "Estamos grabando los primeros ejemplos con alumnos reales. Mientras tanto, escucha los clips en Instagram.",
+} as const;
+
 export const programs = {
-  title: "Programas",
-  intro: "Elige el formato que calza con tu tiempo y tu banda. Todos incluyen grabaciones de cada sesión y material de práctica.",
+  eyebrow: "Programas",
+  title: "Elige tu formato",
+  intro: "Online o presencial en Santiago. Todos incluyen grabación de cada sesión y material de práctica.",
   items: [
     {
       name: "Clase de prueba",
       format: "Online o presencial · 45 min",
-      text: "Diagnóstico completo de tu voz y una primera técnica de distorsión que te llevas a casa el mismo día.",
+      text: "Diagnóstico completo de tu voz y una primera técnica de distorsión que te llevas el mismo día.",
       bullets: ["Evaluación vocal", "Plan personalizado", "Sin compromiso"],
       cta: "Agendar prueba",
       featured: false,
@@ -117,7 +122,7 @@ export const programs = {
       name: "Clases 1:1",
       format: "Online o presencial · 60 min",
       text: "El programa central. Sesiones semanales enfocadas en tu estilo, tus canciones y tus metas de escenario o estudio.",
-      bullets: ["Feedback en tiempo real", "Grabación de cada clase", "Rutina de práctica semanal", "Soporte por WhatsApp"],
+      bullets: ["Feedback en tiempo real", "Grabación de cada clase", "Rutina semanal de práctica", "Soporte por WhatsApp"],
       cta: "Quiero clases 1:1",
       featured: true,
     },
@@ -133,33 +138,74 @@ export const programs = {
 } as const;
 
 export const coach = {
-  title: "Tu coach",
+  eyebrow: "Tu coach",
   name: "Tamara Rivas",
-  role: "Vocalista de Chances y coach de voces extremas",
-  // Foto: guarda el archivo en /public/coach/tamara.jpg y deja la ruta aquí. null muestra el placeholder.
+  role: "Voz de Chances · Coach de distorsiones vocales",
+  // Guarda la foto en /public/coach/tamara.jpg y pon la ruta aquí. null muestra el placeholder.
   photo: null as string | null,
   photoAlt: "Tamara Rivas cantando en vivo con Chances",
   photoCredit: "",
   bio: [
-    "Voz de la banda chilena Chances y fundadora de Scream Lab. Canta limpio y distorsionado en el mismo set, así que enseña desde el escenario, no desde la teoría.",
-    "Creó Scream Lab para que nadie tenga que aprender a gritar rompiéndose la voz. Cada alumno sale de la primera clase con una técnica concreta y un plan.",
+    "Vocalista de Chances, banda santiaguina de metalcore y post-hardcore. Con ellos grabó el disco homónimo (2023), tocó en Lollapalooza Chile 2025 y ha abierto para Meshuggah, Converge, Black Veil Brides, The Ghost Inside y Korn.",
+    "Diplomada en voz y formada en pedagogía vocal contemporánea, lleva más de nueve años estudiando la voz y más de cuatro enseñando distorsiones: guturales, screams y voz rasgada, presencial y online.",
+    "Fundó Scream Lab para enseñar lo que usa cada fin de semana en el escenario: cómo gritar con potencia sin destruir la voz.",
   ],
+  pullQuote: {
+    text: "Un grito melódico y profundo, pero crudo y filoso.",
+    source: "Rockaxis, reseña del disco Chances (2023)",
+    url: "https://www.rockaxis.com/chile/disco/40271/chances-chances/",
+  },
   band: {
     name: "Chances",
     instagram: "somoschances",
     url: "https://linktr.ee/somoschances",
+    spotify: "https://open.spotify.com/artist/43rnFVPi0HzBK1CTrjIhBZ",
+    youtube: "https://www.youtube.com/@somoschances",
   },
-  highlights: ["Voz de Chances", "Clases online y presenciales", "Método propio en 4 fases"],
+  facts: [
+    { value: "+9", label: "años estudiando la voz" },
+    { value: "+4", label: "años enseñando distorsión" },
+    { value: "2025", label: "Lollapalooza Chile con Chances" },
+  ],
+} as const;
+
+export const press = {
+  eyebrow: "Prensa",
+  title: "Lo que dicen de la voz de tu coach",
+  items: [
+    {
+      quote:
+        "Tamara Rivas se acopla con un dominio intempestivo en cada verso, con una destreza de emoción y ejecución desde un grito melódico y profundo pero crudo y filoso.",
+      source: "Rockaxis",
+      context: "Reseña del disco Chances, 2023",
+      url: "https://www.rockaxis.com/chile/disco/40271/chances-chances/",
+    },
+    {
+      quote:
+        "El grupo encabezado por la gran vocalista Tamara Rivas tiene mucha experiencia en estas instancias, aperturando los shows de grandes bandas internacionales en múltiples ocasiones.",
+      source: "Rockaxis",
+      context: "Korn en el Estadio Nacional, 2026",
+      url: "https://www.rockaxis.com/rock/show/50535/korn-un-requiem-de-brutalidad/",
+    },
+    {
+      quote:
+        "Que una banda chilena de metalcore se presente en uno de los stage principales del festival no es para nada común. Chances se ha ganado su posición a punta de una ética de trabajo indiscutible.",
+      source: "Expectador",
+      context: "Lollapalooza Chile 2025",
+      url: "https://expectador.cl/2025/03/24/lollapalooza-chile-2025-dia-tres/",
+    },
+  ],
 } as const;
 
 export const testimonials = {
+  eyebrow: "Alumnos",
   title: "Lo que dicen en el laboratorio",
   items: [
     {
       quote:
         "Llevaba dos años quedando afónico después de cada tocata. En seis clases entendí qué estaba haciendo mal y ahora aguanto sets de una hora.",
       name: "Alumno de ejemplo",
-      band: "Vocalista · Banda de deathcore",
+      band: "Vocalista · deathcore",
       outcome: "Sets de 60 min sin afonía",
     },
     {
@@ -170,8 +216,7 @@ export const testimonials = {
       outcome: "Primer fry estable en 5 semanas",
     },
     {
-      quote:
-        "Lo mejor es que grabamos todo. Escuchar mi progreso semana a semana me mantiene practicando.",
+      quote: "Lo mejor es que grabamos todo. Escuchar mi progreso semana a semana me mantiene practicando.",
       name: "Alumno de ejemplo",
       band: "Metalcore",
       outcome: "Grabó su primer EP con voces propias",
@@ -188,13 +233,14 @@ export const freebie = {
 } as const;
 
 export const pricing = {
-  title: "Precios",
-  intro: "Valores referenciales en pesos chilenos. Pagas por transferencia o en efectivo, sin matrícula.",
+  eyebrow: "Precios",
+  title: "Sin matrícula, sin letra chica",
+  intro: "Valores referenciales en pesos chilenos. Pagas por transferencia o en efectivo.",
   tiers: [
     {
       name: "Clase de prueba",
       price: "$15.000",
-      period: "única vez",
+      period: "una vez",
       features: ["45 minutos", "Diagnóstico vocal", "Plan de trabajo"],
       cta: "Agendar prueba",
       featured: false,
@@ -202,7 +248,7 @@ export const pricing = {
     {
       name: "Pack 4 clases",
       price: "$85.000",
-      period: "mensual",
+      period: "al mes",
       features: ["4 sesiones 1:1 de 60 min", "Grabaciones y material", "Soporte por WhatsApp", "Reagenda hasta 24 h antes"],
       cta: "Empezar ahora",
       featured: true,
@@ -218,7 +264,13 @@ export const pricing = {
   ],
 } as const;
 
+export const guarantee = {
+  title: "Garantía del laboratorio",
+  text: "Si después de la clase de prueba sientes que el método no es para ti, no pagas nada más. Y si en 8 semanas de clases 1:1 no logras tu primera distorsión estable, seguimos trabajando sin costo hasta que la tengas.",
+} as const;
+
 export const faq = {
+  eyebrow: "Dudas",
   title: "Preguntas frecuentes",
   items: [
     {
@@ -249,9 +301,9 @@ export const faq = {
 } as const;
 
 export const contact = {
+  eyebrow: "Contacto",
   title: "Agenda tu clase de prueba",
-  intro:
-    "Escríbenos por WhatsApp o deja tus datos. Respondemos el mismo día con horarios disponibles.",
+  intro: "Escríbenos por WhatsApp o deja tus datos. Respondemos el mismo día con horarios disponibles.",
   formLabels: {
     name: "Tu nombre",
     style: "Estilo o banda",
