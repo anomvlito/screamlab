@@ -34,11 +34,11 @@ function subscribe(onChange: () => void) {
 
 function getSnapshot(): ThemeId {
   const current = document.documentElement.getAttribute("data-theme");
-  return isThemeId(current) ? current : "ember";
+  return isThemeId(current) ? current : "mono";
 }
 
 function getServerSnapshot(): ThemeId {
-  return "ember";
+  return "mono";
 }
 
 function runWithViewTransition(fn: () => void) {

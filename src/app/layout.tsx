@@ -17,8 +17,8 @@ const display = Big_Shoulders({
   display: "swap",
 });
 
-/** Paleta por defecto. Opciones: "ember" | "acid" | "uv" | "mono". Previsualiza con /?theme=mono */
-const DEFAULT_THEME = process.env.NEXT_PUBLIC_THEME ?? "ember";
+/** Paleta por defecto. Opciones: "ember" | "acid" | "uv" | "mono". Previsualiza con /?theme=ember */
+const DEFAULT_THEME = process.env.NEXT_PUBLIC_THEME ?? "mono";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0b0a0c",
+  themeColor: "#0a0a0a",
   colorScheme: "dark",
   viewportFit: "cover",
 };

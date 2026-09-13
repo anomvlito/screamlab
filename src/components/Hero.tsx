@@ -11,6 +11,7 @@ export function Hero() {
         {/* Logo vectorizado, ocupa todo el ancho disponible y se pinta con el degradado. */}
         <Logo
           tone="gradient"
+          glitch
           className="mt-6 w-full drop-shadow-[0_0_40px_var(--accent-soft)]"
           label="Scream Lab"
         />
