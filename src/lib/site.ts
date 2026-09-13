@@ -31,7 +31,7 @@ export const site = {
   city: "Santiago, Chile",
   whatsapp: {
     // Solo dígitos, con código de país, sin "+".
-    number: nonEmpty(process.env.NEXT_PUBLIC_WHATSAPP, "56900000000").replace(/\D/g, ""),
+    number: nonEmpty(process.env.NEXT_PUBLIC_WHATSAPP, "56939592909").replace(/\D/g, ""),
     message: "Hola Scream Lab, quiero agendar una clase de prueba.",
   },
   instagram: nonEmpty(process.env.NEXT_PUBLIC_INSTAGRAM, "screamlabnet").replace(/^@/, ""),
