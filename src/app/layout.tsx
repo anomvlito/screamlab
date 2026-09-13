@@ -17,7 +17,7 @@ const display = Big_Shoulders({
   display: "swap",
 });
 
-/** Paleta por defecto. Opciones: "ember" | "acid" | "uv". Previsualiza con /?theme=acid */
+/** Paleta por defecto. Opciones: "ember" | "acid" | "uv" | "mono". Previsualiza con /?theme=mono */
 const DEFAULT_THEME = process.env.NEXT_PUBLIC_THEME ?? "ember";
 
 export const metadata: Metadata = {
@@ -73,7 +73,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         {/* Aplica antes del primer paint la paleta guardada por el selector del sitio
             (localStorage) o la de un enlace de prueba (?theme=), para que no haya parpadeo. */}
         <Script id="theme-preview" strategy="beforeInteractive">
-          {`try{var t=new URLSearchParams(location.search).get("theme");if(!t){try{t=localStorage.getItem("screamlab-theme");}catch(e){}}if(t&&/^(ember|acid|uv)$/.test(t)){document.documentElement.setAttribute("data-theme",t);}}catch(e){}`}
+          {`try{var t=new URLSearchParams(location.search).get("theme");if(!t){try{t=localStorage.getItem("screamlab-theme");}catch(e){}}if(t&&/^(ember|acid|uv|mono)$/.test(t)){document.documentElement.setAttribute("data-theme",t);}}catch(e){}`}
         </Script>
         {children}
       </body>

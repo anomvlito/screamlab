@@ -9,7 +9,7 @@ export function Header() {
     <header className="sticky top-0 z-40 border-b border-line/60 bg-bg/70 backdrop-blur-md">
       <div className="mx-auto flex h-16 w-full max-w-[90rem] items-center justify-between gap-4 px-gutter">
         <Link href="#top" className="text-fg transition hover:text-accent" aria-label="Scream Lab, inicio">
-          <Logo className="h-7 w-28 sm:h-8 sm:w-36" />
+          <Logo glitch className="h-7 w-28 sm:h-8 sm:w-36" />
         </Link>
 
         <nav aria-label="Principal" className="label hidden items-center gap-7 text-[0.7rem] text-muted lg:flex">

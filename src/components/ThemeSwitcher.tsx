@@ -13,6 +13,7 @@ const THEMES = [
   { id: "ember", label: "Ember", gradient: "linear-gradient(120deg,#ff2e3d,#ff8a00)" },
   { id: "acid", label: "Acid", gradient: "linear-gradient(120deg,#c8ff2e,#2ee6a8)" },
   { id: "uv", label: "UV", gradient: "linear-gradient(120deg,#ff2d7a,#7c4dff)" },
+  { id: "mono", label: "Mono", gradient: "linear-gradient(120deg,#f2f2f2,#4d4d4d)" },
 ] as const;
 
 const STORAGE_KEY = "screamlab-theme";
@@ -20,7 +21,7 @@ const STORAGE_KEY = "screamlab-theme";
 type ThemeId = (typeof THEMES)[number]["id"];
 
 function isThemeId(v: string | null): v is ThemeId {
-  return v === "ember" || v === "acid" || v === "uv";
+  return v === "ember" || v === "acid" || v === "uv" || v === "mono";
 }
 
 // El atributo data-theme en <html> es la fuente de verdad (lo lee también el

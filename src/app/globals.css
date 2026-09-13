@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------
-   Tokens. Tres paletas: ember (por defecto), acid y uv.
+   Tokens. Cuatro paletas: ember (por defecto), acid, uv y mono.
    Se cambian con data-theme en <html>; para previsualizar: /?theme=acid
    ------------------------------------------------------------------ */
 :root {
@@ -59,6 +59,34 @@
     radial-gradient(50% 40% at 15% 10%, rgba(255, 45, 122, 0.26), transparent 70%),
     radial-gradient(45% 45% at 85% 20%, rgba(124, 77, 255, 0.24), transparent 70%),
     radial-gradient(60% 50% at 50% 100%, rgba(124, 77, 255, 0.14), transparent 70%);
+}
+
+/* Mono: el logo chiquitito gris del header, pero para todo el sitio.
+   Sin color, solo grises, blanco y negro. */
+:root[data-theme="mono"] {
+  --bg: #0a0a0a;
+  --bg-2: #141414;
+  --bg-2-rgb: 20, 20, 20;
+  --bg-3: #1e1e1e;
+  --line: #333333;
+  --fg: #f5f5f5;
+  --muted: #9c9c9c;
+  --accent: #eaeaea;
+  --accent-2: #767676;
+  --accent-ink: #101010;
+  --accent-soft: rgba(234, 234, 234, 0.1);
+  --grad-accent: linear-gradient(120deg, var(--accent) 0%, var(--accent-2) 100%);
+  --grad-mesh:
+    radial-gradient(50% 40% at 15% 10%, rgba(255, 255, 255, 0.1), transparent 70%),
+    radial-gradient(45% 45% at 85% 20%, rgba(255, 255, 255, 0.06), transparent 70%),
+    radial-gradient(60% 50% at 50% 100%, rgba(255, 255, 255, 0.08), transparent 70%);
+}
+
+/* La foto real y el ícono verde de WhatsApp no siguen tokens de color;
+   en mono los desaturamos aparte para que no quede ningún color suelto. */
+:root[data-theme="mono"] .coach-photo,
+:root[data-theme="mono"] .whatsapp-float {
+  filter: grayscale(1) contrast(1.05);
 }
 
 /* Escala tipográfica y espaciado fluidos (se adaptan al ancho del dispositivo). */
@@ -135,17 +163,79 @@ body {
   text-transform: uppercase;
 }
 
-/* Logo vía mask: hereda currentColor, se puede pintar con degradado. */
-.logo-mask {
+/* Logo vía mask: hereda currentColor, se puede pintar con degradado.
+   .logo-frame es el mismo tamaño/proporción pero como caja posicionable,
+   para apilar las copias fantasma del efecto glitch encima. */
+.logo-mask,
+.logo-frame {
   display: block;
   aspect-ratio: 3682 / 928;
+}
+.logo-mask {
   background: currentColor;
   -webkit-mask: url("/brand/screamlab-logo.svg") no-repeat center / contain;
   mask: url("/brand/screamlab-logo.svg") no-repeat center / contain;
 }
+.logo-frame {
+  position: relative;
+}
+.logo-frame .logo-mask {
+  position: absolute;
+  inset: 0;
+  aspect-ratio: auto;
+}
 
 .logo-gradient {
   background: var(--grad-accent);
+}
+
+/* Glitch de TV descompuesta: quieto casi todo el tiempo, corte breve cada
+   ~8s con desfase de color rojo/cian. Nada de esto corre con
+   prefers-reduced-motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .logo-glitch {
+    isolation: isolate;
+  }
+  .logo-glitch-r,
+  .logo-glitch-b {
+    opacity: 0;
+    mix-blend-mode: screen;
+    pointer-events: none;
+  }
+  .logo-glitch-r {
+    color: #ff2d55;
+    animation: logo-glitch-r 8s steps(1, end) infinite;
+  }
+  .logo-glitch-b {
+    color: #2de0ff;
+    animation: logo-glitch-b 8s steps(1, end) infinite;
+    animation-delay: 0.06s;
+  }
+  .logo-glitch-base {
+    animation: logo-glitch-flicker 8s steps(1, end) infinite;
+  }
+
+  @keyframes logo-glitch-r {
+    0%, 96.5%, 100% { opacity: 0; transform: translate(0, 0); clip-path: inset(0 0 0 0); }
+    97% { opacity: 0.55; transform: translate(-3px, 1px); clip-path: inset(8% 0 55% 0); }
+    97.6% { opacity: 0.4; transform: translate(2px, -1px); clip-path: inset(45% 0 15% 0); }
+    98.2% { opacity: 0.5; transform: translate(-2px, 0); clip-path: inset(0 0 65% 0); }
+    98.8% { opacity: 0; }
+  }
+  @keyframes logo-glitch-b {
+    0%, 96.5%, 100% { opacity: 0; transform: translate(0, 0); clip-path: inset(0 0 0 0); }
+    97% { opacity: 0.5; transform: translate(3px, -1px); clip-path: inset(50% 0 8% 0); }
+    97.6% { opacity: 0.4; transform: translate(-2px, 1px); clip-path: inset(12% 0 48% 0); }
+    98.2% { opacity: 0.4; transform: translate(2px, 0); clip-path: inset(60% 0 4% 0); }
+    98.8% { opacity: 0; }
+  }
+  @keyframes logo-glitch-flicker {
+    0%, 96.5%, 100% { filter: none; transform: none; }
+    97% { filter: contrast(1.3) brightness(1.1); transform: translateX(1px); }
+    97.6% { filter: contrast(1.1) brightness(0.95); transform: translateX(-1px); }
+    98.2% { filter: contrast(1.25) brightness(1.05); transform: translateX(1px); }
+    98.8% { filter: none; transform: none; }
+  }
 }
 
 .grad-text {

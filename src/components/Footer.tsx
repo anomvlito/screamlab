@@ -8,7 +8,7 @@ export function Footer() {
     <footer className="mt-auto border-t border-line/60">
       <div className="mx-auto flex w-full max-w-[90rem] flex-col gap-8 px-gutter py-12 md:flex-row md:items-end md:justify-between">
         <div>
-          <Logo className="h-9 w-44 text-fg" />
+          <Logo glitch className="h-9 w-44 text-fg" />
           <p className="mt-3 text-step--1 text-muted">
             {site.tagline} · {site.city}
           </p>
