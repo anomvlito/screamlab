@@ -1,10 +1,23 @@
 import Image from "next/image";
+import { BackgroundVideo } from "@/components/BackgroundVideo";
 import { Section } from "@/components/Section";
 import { coach } from "@/lib/content";
 
 export function Coach() {
   return (
-    <Section id="coach" eyebrow={coach.eyebrow} title={coach.name} intro={coach.role}>
+    <Section
+      id="coach"
+      eyebrow={coach.eyebrow}
+      title={coach.name}
+      intro={coach.role}
+      background={
+        <BackgroundVideo
+          youtubeId="pkpjSMphKBY"
+          label="Tamara Rivas cantando 10 PM de Chances, de fondo"
+          scrim={78}
+        />
+      }
+    >
       <div className="grid gap-8 lg:grid-cols-[5fr_7fr] lg:gap-12">
         <figure className="mesh grain relative aspect-[4/5] overflow-hidden rounded-card border border-line bg-bg-2 lg:sticky lg:top-24">
           {coach.photo ? (
