@@ -141,10 +141,12 @@ export const coach = {
   eyebrow: "Tu coach",
   name: "Tamara Rivas",
   role: "Voz de Chances · Coach de distorsiones vocales",
-  // Guarda la foto en /public/coach/tamara.jpg y pon la ruta aquí. null muestra el placeholder.
-  photo: null as string | null,
-  photoAlt: "Tamara Rivas cantando en vivo con Chances",
-  photoCredit: "",
+  // Foto de prensa (Teatro Caupolicán, 2024, abriendo para Meshuggah).
+  // Créditada a Hugo Hinojosa (@shicolugo, zumbido.cl); pendiente autorización
+  // formal del fotógrafo o la banda antes de un lanzamiento definitivo.
+  photo: "/coach/tamara.jpg" as string | null,
+  photoAlt: "Tamara Rivas cantando en vivo con Chances en el Teatro Caupolicán",
+  photoCredit: "Hugo Hinojosa / zumbido.cl",
   bio: [
     "Vocalista de Chances, banda santiaguina de metalcore y post-hardcore. Con ellos grabó el disco homónimo (2023), tocó en Lollapalooza Chile 2025 y ha abierto para Meshuggah, Converge, Black Veil Brides, The Ghost Inside y Korn.",
     "Diplomada en voz y formada en pedagogía vocal contemporánea, lleva más de nueve años estudiando la voz y más de cuatro enseñando distorsiones: guturales, screams y voz rasgada, presencial y online.",

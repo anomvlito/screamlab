@@ -13,7 +13,9 @@ export function Coach() {
               alt={coach.photoAlt}
               fill
               sizes="(min-width: 1024px) 40vw, 100vw"
-              className="object-cover"
+              className="coach-photo object-cover"
+              style={{ objectPosition: "50% 28%" }}
+              priority
             />
           ) : (
             <div className="absolute inset-0 flex items-end p-6">
