@@ -15,6 +15,7 @@ export function Coach() {
           youtubeId="pkpjSMphKBY"
           label="Tamara Rivas cantando 10 PM de Chances, de fondo"
           scrim={78}
+          className="hidden lg:block"
         />
       }
     >
@@ -43,6 +44,15 @@ export function Coach() {
         </figure>
 
         <div className="flex flex-col gap-8">
+          {/* En pantallas angostas el fondo de la sección casi no se ve
+              detrás del contenido, así que acá va visible como tarjeta. */}
+          <BackgroundVideo
+            youtubeId="pkpjSMphKBY"
+            label="Tamara Rivas cantando 10 PM de Chances, en vivo"
+            variant="inline"
+            className="lg:hidden"
+          />
+
           <blockquote className="mesh glass relative overflow-hidden rounded-card border-l-2 border-accent px-6 py-5">
             <p className="display text-step-2 text-balance">“{coach.pullQuote.text}”</p>
             <footer className="mt-3 text-step--1 text-muted">

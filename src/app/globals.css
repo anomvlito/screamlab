@@ -364,4 +364,5 @@ body {
   }
   /* Sin autoplay de video para quien pide menos movimiento: queda solo el velo oscuro. */
   .video-bg iframe { display: none; }
+  .video-bg.aspect-video { display: none; } /* tarjeta suelta (variant inline): sin video no queda nada que mostrar */
 }
