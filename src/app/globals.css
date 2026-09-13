@@ -190,8 +190,8 @@ body {
 }
 
 /* Glitch de TV descompuesta: quieto casi todo el tiempo, corte breve cada
-   ~8s con desfase de color rojo/cian. Nada de esto corre con
-   prefers-reduced-motion. */
+   6 a 12s (al azar y distinto por logo, ver Logo.tsx) con desfase de color
+   rojo/cian. Nada de esto corre con prefers-reduced-motion. */
 @media (prefers-reduced-motion: no-preference) {
   .logo-glitch {
     isolation: isolate;
@@ -202,17 +202,30 @@ body {
     mix-blend-mode: screen;
     pointer-events: none;
   }
+  /* Duración y desfase quedan en variables: Logo.tsx sortea un valor
+     distinto por instancia (al montar, en el cliente) para que el logo
+     chico y el grande no se descompongan siempre al mismo tiempo. Los
+     valores de acá son solo el respaldo antes de que corra ese script. */
+  .logo-glitch-r,
+  .logo-glitch-b,
+  .logo-glitch-base {
+    animation-timing-function: steps(1, end);
+    animation-iteration-count: infinite;
+    animation-duration: var(--glitch-duration, 8s);
+  }
   .logo-glitch-r {
     color: #ff2d55;
-    animation: logo-glitch-r 8s steps(1, end) infinite;
+    animation-name: logo-glitch-r;
+    animation-delay: var(--glitch-delay, 0s);
   }
   .logo-glitch-b {
     color: #2de0ff;
-    animation: logo-glitch-b 8s steps(1, end) infinite;
-    animation-delay: 0.06s;
+    animation-name: logo-glitch-b;
+    animation-delay: calc(var(--glitch-delay, 0s) + 0.06s);
   }
   .logo-glitch-base {
-    animation: logo-glitch-flicker 8s steps(1, end) infinite;
+    animation-name: logo-glitch-flicker;
+    animation-delay: var(--glitch-delay, 0s);
   }
 
   /* Desplazamientos en % (relativos al ancho/alto del propio logo), no en px:
