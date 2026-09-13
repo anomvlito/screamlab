@@ -1,8 +1,14 @@
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata, Viewport } from "next";
 import { Archivo, Big_Shoulders } from "next/font/google";
 import Script from "next/script";
 import { site } from "@/lib/site";
 import "./globals.css";
+
+// Google Analytics 4: opcional. Se activa solo si existe esta variable en
+// Vercel (Settings > Environment Variables). Sin ID, no se carga nada.
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
 const body = Archivo({
   variable: "--font-body",
@@ -76,6 +82,21 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           {`try{var t=new URLSearchParams(location.search).get("theme");if(!t){try{t=localStorage.getItem("screamlab-theme");}catch(e){}}if(t&&/^(ember|acid|uv|mono)$/.test(t)){document.documentElement.setAttribute("data-theme",t);}}catch(e){}`}
         </Script>
         {children}
+
+        {/* Analítica de Vercel: visitas y Core Web Vitals reales, sin cookies
+            ni configuración adicional (ya viene incluida con el hosting). */}
+        <Analytics />
+        <SpeedInsights />
+
+        {/* Google Analytics 4: solo carga si hay ID configurado. */}
+        {GA_ID ? (
+          <>
+            <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
+            <Script id="ga4-init" strategy="afterInteractive">
+              {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}');`}
+            </Script>
+          </>
+        ) : null}
       </body>
     </html>
   );

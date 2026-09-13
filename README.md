@@ -38,12 +38,17 @@ npx vercel --prod   # producción
 
 ## Pendientes antes de lanzar
 
-- [ ] Reemplazar número de WhatsApp, Instagram y correo en `.env.local` y en Vercel.
-- [ ] Nombre, bio y foto real del coach (`src/lib/content.ts`, `src/components/Coach.tsx`).
 - [ ] Testimonios reales con nombre y banda.
 - [ ] Precios definitivos.
 - [ ] Audios antes/después en `public/audio/antes.mp3` y `public/audio/despues.mp3`, luego `ready: true` en `beforeAfter`.
-- [ ] Comprar el dominio y ponerlo en `NEXT_PUBLIC_SITE_URL`.
+- [ ] Comprar el dominio y ponerlo en `NEXT_PUBLIC_SITE_URL` (Vercel > Settings > Environment Variables). Sin esto `robots.ts` y el sitemap usan el dominio de respaldo.
+
+Ya resuelto: WhatsApp, Instagram y correo reales; foto y autorización del coach; `robots.ts` ya no indexa vistas previas de Vercel, solo producción; analítica instalada (ver abajo).
+
+## Analítica
+
+- **Vercel Analytics** y **Speed Insights**: activos por defecto, sin configurar nada (vienen con el hosting). Se ven en el dashboard de Vercel, pestaña Analytics / Speed Insights del proyecto.
+- **Google Analytics 4** (opcional): crea una propiedad GA4, copia su ID de medición (`G-XXXXXXXXXX`) y ponlo en Vercel como `NEXT_PUBLIC_GA_ID`. Sin esa variable, GA4 simplemente no carga.
 
 ## Logo
 
