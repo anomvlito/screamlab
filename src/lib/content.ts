@@ -134,13 +134,22 @@ export const programs = {
 
 export const coach = {
   title: "Tu coach",
-  name: "Nombre del coach",
-  role: "Vocalista y coach de voces extremas",
+  name: "Tamara Rivas",
+  role: "Vocalista de Chances y coach de voces extremas",
+  // Foto: guarda el archivo en /public/coach/tamara.jpg y deja la ruta aquí. null muestra el placeholder.
+  photo: null as string | null,
+  photoAlt: "Tamara Rivas cantando en vivo con Chances",
+  photoCredit: "",
   bio: [
-    "Más de diez años gritando en escenarios y estudios de Chile y Latinoamérica. Formación en técnica vocal contemporánea y especialización en distorsión vocal saludable.",
-    "Creó Scream Lab para que nadie tenga que aprender a gritar rompiéndose la voz, como le pasó a la mayoría de nuestra generación.",
+    "Voz de la banda chilena Chances y fundadora de Scream Lab. Canta limpio y distorsionado en el mismo set, así que enseña desde el escenario, no desde la teoría.",
+    "Creó Scream Lab para que nadie tenga que aprender a gritar rompiéndose la voz. Cada alumno sale de la primera clase con una técnica concreta y un plan.",
   ],
-  highlights: ["+300 alumnos", "Bandas en gira", "Método propio en 4 fases"],
+  band: {
+    name: "Chances",
+    instagram: "somoschances",
+    url: "https://linktr.ee/somoschances",
+  },
+  highlights: ["Voz de Chances", "Clases online y presenciales", "Método propio en 4 fases"],
 } as const;
 
 export const testimonials = {
